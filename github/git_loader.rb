@@ -1,0 +1,34 @@
+require 'git'
+
+# Usage:
+#
+# loader = GitLoader.new(path)
+# loader.grouped_commits
+class GitLoader
+
+  MAX_COMMITS = 10000
+  COMMIT_GROUP_SIZE = 40
+
+  Commit = Struct.new(:name,:message)
+
+  attr_accessor :repo
+
+  def initialize(path)
+    @repo = Git.open(path)
+    repo.checkout('master')
+  end
+
+  def commits
+    repo.log(MAX_COMMITS)
+  end
+
+  def parsed_commits
+    commits.to_a.reverse.map { |c| Commit.new(c.author.name,c.message) }
+  end
+
+  # returns an array of commits grouped by size
+  def grouped_commits
+    parsed_commits.each_slice(COMMIT_GROUP_SIZE).to_a
+  end
+
+end
