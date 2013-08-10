@@ -11,11 +11,12 @@ class GitLoader
 
   Commit = Struct.new(:name,:message)
 
-  attr_accessor :repo
+  attr_accessor :repo, :group_size
 
-  def initialize(path)
+  def initialize(path,group_size = COMMIT_GROUP_SIZE)
     @repo = Git.open(path)
-    repo.checkout('master')
+    @repo.checkout('master')
+    @group_size = group_size
   end
 
   def commits
@@ -28,7 +29,7 @@ class GitLoader
 
   # returns an array of commits grouped by size
   def grouped_commits
-    parsed_commits.each_slice(COMMIT_GROUP_SIZE).to_a
+    parsed_commits.each_slice(group_size).to_a
   end
 
 end
