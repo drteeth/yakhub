@@ -107,8 +107,13 @@ class CommitAnalyzer
 
   def write_results(filename)
     File.open(filename,'w') do |f|
-      f << results
+      f << results.to_json
     end
+  end
+
+  def load_scores(file)
+    @results = JSON.parse(File.read(file))
+    self
   end
 
   def scores

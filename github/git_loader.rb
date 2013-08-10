@@ -11,12 +11,12 @@ class GitLoader
 
   Commit = Struct.new(:name,:message)
 
-  attr_accessor :repo, :group_size
+  attr_accessor :repo
 
-  def initialize(path,group_size = COMMIT_GROUP_SIZE)
+  def initialize(path, sections=4)
     @repo = Git.open(path)
     @repo.checkout('master')
-    @group_size = group_size
+    @sections = sections
   end
 
   def commits
@@ -24,12 +24,16 @@ class GitLoader
   end
 
   def parsed_commits
-    commits.to_a.reverse.map { |c| Commit.new(c.author.name,c.message) }
+    commits.to_a.reverse.take(200).map { |c| Commit.new(c.author.name,c.message) }
   end
 
   # returns an array of commits grouped by size
   def grouped_commits
     parsed_commits.each_slice(group_size).to_a
+  end
+
+  def group_size
+    (parsed_commits.count/@sections.to_f).floor
   end
 
 end

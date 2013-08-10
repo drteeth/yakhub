@@ -7,5 +7,3 @@ commits = loader.grouped_commits
 
 analyzer = CommitAnalyzer.new(commits)
 scores =  analyzer.run
-
-puts scores
