@@ -1,13 +1,13 @@
 class Author
   attr_reader :name, :channel, :track, :strategy
 
-  Duration = 64
-  NoteLength = 32
+  Duration = 44
+  NoteLength = 0
 
-  def initialize(name, channel, strategy)
+  def initialize(name, channel, strategy, track=Track.new)
     @name = name
     @channel = channel
-    @track = Track.new
+    @track = track
     @strategy = strategy
   end
 

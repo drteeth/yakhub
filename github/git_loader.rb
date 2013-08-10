@@ -33,7 +33,7 @@ class GitLoader
   end
 
   def group_size
-    (parsed_commits.count/@sections.to_f).floor
+    [(parsed_commits.count/@sections.to_f).floor,1].max
   end
 
 end

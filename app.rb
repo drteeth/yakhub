@@ -5,13 +5,20 @@ require_relative 'rbmidgen/rbmidgen'
 
 require_relative 'scale'
 require_relative 'play_degree'
+require_relative 'play_random'
 require_relative 'author'
 
-repo = './ember.js'
+repo = ARGV[0] || './'
+
+def cached_file(repo)
+  name = repo.gsub(/\W/,'')
+  "#{name}.json"
+end
+
 loader = GitLoader.new(repo)
 commits = loader.grouped_commits
 
-response = "#{repo}.json"
+response = cached_file repo
 analyzer = CommitAnalyzer.new(commits, response)
 unless File.exists?(response)
   analyzer.run
@@ -41,9 +48,12 @@ def next_channel
 end
 
 file = MidiFile.new
+track = Track.new
+
 commits.each_with_index do |commit_group, i|
   key ||= 'c'
   scale = sentiment_to_scale(key, scores[i])
+  bedTrack = Track.new
 
   authors = {}
   commit_group.each_with_index do |commit,j|
@@ -51,9 +61,9 @@ commits.each_with_index do |commit_group, i|
     a = if authors.has_key?(author_name)
       authors[author_name]
     else
-      strategy = PlayDegree.new(i+1)
+      strategy = PlayRandom.new
       channel = next_channel
-      author = Author.new(author_name, channel, strategy)
+      author = Author.new(author_name, channel, strategy, track)
       authors[author_name] = author
       file.addTrack(author.track)
       author
@@ -65,3 +75,5 @@ end
 File.open('test2.mid', 'wb') do |f|
   f.write(file.toBytes)
 end
+
+puts scores
