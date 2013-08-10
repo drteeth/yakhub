@@ -28,8 +28,6 @@ class MidiFile
     track_count = tracks.count.to_s(16)
     # prepare the file header
     bytes = MidiFile::HDR_CHUNKID + MidiFile::HDR_CHUNK_SIZE + MidiFile::HDR_TYPE0
-    puts bytes.encoding
-
     # add the number of tracks (2 bytes)
     bytes += Util.codes2Str(Util.str2Bytes(track_count, 2))
     # add the number of ticks per beat (currently hardcoded)

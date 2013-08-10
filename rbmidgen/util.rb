@@ -58,7 +58,6 @@ class Util
   # @param byteArray {Array} array of bytes that will be converted to a string
   # @returns hexadecimal string
   def self.codes2Str(byteArray)
-    puts byteArray.inspect
     byteArray.flatten.map {|b| b.chr }.join
   end
 
