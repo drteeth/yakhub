@@ -75,6 +75,10 @@ class Job
         @song.play_backing_track
         musician.play(commit, section.scale)
       end
+
+      @musicians_roles.values.each do |m|
+        m.change_section
+      end
     end
   end
 

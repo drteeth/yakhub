@@ -1,3 +1,5 @@
+require_relative 'drummer'
+
 class Song
 
   attr_accessor :key
@@ -10,6 +12,8 @@ class Song
     @background
     @next_track = 0
     @next_channel = 0
+    # @backing = Backing.new('backing', self)
+    @drummer = Drummer.new('drummer', self)
   end
 
   def add_section(section)
@@ -28,10 +32,10 @@ class Song
 
     # leave the drum and backing channels open.
     while c != 10 && c != 15
+      @next_channel += 1
       c = @next_channel
     end
 
-    @next_channel += 1
     c % 16
   end
 
@@ -44,11 +48,16 @@ class Song
   end
 
   def play_drums
-    puts 'play_drums'
+    @drummer.play(nil, current_section.scale)
   end
 
   def play_backing_track
-    puts 'play_backing_track'
+    # @backing.set_duration(current_section.commits.count*Musician::Duration)
+    # @backing.play(nil, current_section.scale)
+  end
+
+  def current_section
+    @sections.last
   end
 
   def background

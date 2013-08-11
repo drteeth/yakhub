@@ -1,3 +1,5 @@
+require_relative 'musician'
+
 class Drummer < Musician
 
   def initialize(*args)
@@ -11,7 +13,7 @@ class Drummer < Musician
     Instrument::AcousticGrandPiano
   end
 
-  def play
+  def play(commit, scale)
     # kick on the 1
     # hh on the 2
     # snare on the 3

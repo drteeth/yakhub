@@ -26,6 +26,9 @@ class Musician
     NoteLength
   end
 
+  def change_section
+  end
+
   def change_scale(scale)
     @scale = scale
   end
