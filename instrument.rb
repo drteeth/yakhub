@@ -3,7 +3,7 @@ class Instrument
   AcousticGrandPiano = 0
   BrightAcousticPiano = 1
   ElectricGrandPiano = 2
-  Honky-tonkPiano = 3
+  HonkyTonkPiano = 3
   ElectricPiano1 = 4
   ElectricPiano2 = 5
   Harpsichord = 6
@@ -27,18 +27,18 @@ class Instrument
   Harmonica = 22
   TangoAccordion = 23
   # Guitar
-  AcousticGuitar(nylon) = 24
-  AcousticGuitar(steel) = 25
-  ElectricGuitar(jazz) = 26
-  ElectricGuitar(clean) = 27
-  ElectricGuitar(muted) = 28
+  AcousticGuitarNylon = 24
+  AcousticGuitarSteel = 25
+  ElectricGuitarJazz = 26
+  ElectricGuitarClean = 27
+  ElectricGuitarMuted = 28
   OverdrivenGuitar = 29
   DistortionGuitar = 30
   GuitarHarmonics = 31
   # Bass
   AcousticBass = 32
-  ElectricBass(finger) = 33
-  ElectricBass(pick) = 34
+  ElectricBassFinger = 33
+  ElectricBassPick = 34
   FretlessBass = 35
   SlapBass1 = 36
   SlapBass2 = 37
@@ -90,32 +90,32 @@ class Instrument
   Whistle = 78
   Ocarina = 79
   # Synth Lead
-  Lead1(square) = 80
-  Lead2(sawtooth) = 81
-  Lead3(calliope) = 82
-  Lead4(chiff) = 83
-  Lead5(charang) = 84
-  Lead6(voice) = 85
-  Lead7(fifths) = 86
-  Lead8(bass+lead) = 87
+  Lead1Square = 80
+  Lead2Sawtooth = 81
+  Lead3Calliope = 82
+  Lead4Chiff = 83
+  Lead5Charang = 84
+  Lead6Voice = 85
+  Lead7Fifths = 86
+  Lead8Basslead = 87
   # Synth Pad
-  Pad1(newage) = 88
-  Pad2(warm) = 89
-  Pad3(polysynth) = 90
-  Pad4(choir) = 91
-  Pad5(bowed) = 92
-  Pad6(metallic) = 93
-  Pad7(halo) = 94
-  Pad8(sweep) = 95
+  Pad1Newage = 88
+  Pad2Warm = 89
+  Pad3Polysynth = 90
+  Pad4Choir = 91
+  Pad5Bowed = 92
+  Pad6Metallic = 93
+  Pad7Halo = 94
+  Pad8Sweep = 95
   # Synth Effects
-  FX1(rain) = 96
-  FX2(soundtrack) = 97
-  FX3(crystal) = 98
-  FX4(atmosphere) = 99
-  FX5(brightness) = 100
-  FX6(goblins) = 101
-  FX7(echoes) = 102
-  FX8(sci-fi) = 103
+  FX1Rain = 96
+  FX2Soundtrack = 97
+  FX3Crystal = 98
+  FX4Atmosphere = 99
+  FX5Brightness = 100
+  FX6Goblins = 101
+  FX7Echoes = 102
+  FX8SciFi = 103
   # Ethnic
   Sitar = 104
   Banjo = 105

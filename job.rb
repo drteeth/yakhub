@@ -1,11 +1,15 @@
 require_relative 'song'
 require_relative 'section'
+require_relative 'Lead'
+require_relative 'Rythm'
 
 class Job
   attr_accessor :repo
 
   def initialize(repo)
     @repo = repo
+    @musicians_roles = {}
+    @roles = [Lead, Rythm]
   end
 
   def load_commits
@@ -62,10 +66,32 @@ class Job
       section.channel = 0
       @song.add_section(section)
 
-      authors = section.commits.map do |commit|
-        a = Author.new(commit.name, section.channel, @song.strategy, section.track)
-        a.play(section.scale)
+      # turn authors into musician
+      section.commits.each do |commit|
+        # a = Author.new(commit.name, section.channel, @song.strategy, section.track)
+        musician = assign_musician(commit.name, @song)
+
+        # make sure they are playing in the correct scale
+        @song.play_drums
+        @song.play_backing_track
+        musician.play(commit, section.scale)
       end
     end
   end
+
+  # assign an author a musician's role.
+  def assign_musician(name, song)
+    unless @musicians_roles.has_key?(name)
+      musician = pick_role.new(name, song)
+      musician.track = song.next_track
+      @musicians_roles[name] = musician
+    end
+    @musicians_roles[name]
+  end
+
+  # return the class of one of the roles at random
+  def pick_role
+    @roles.shuffle.first
+  end
+
 end

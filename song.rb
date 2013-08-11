@@ -8,17 +8,25 @@ class Song
     @file = file
     @sections = []
     @background
+    @next_track = 0
+    @next_channel = 0
   end
 
   def add_section(section)
     @sections << section
     section.key = key
-    section.track = create_track
   end
 
-  def create_track
-    # don't actually create a track for now
-    @track ||= @file.addTrack
+  def next_track
+    t = @file.addTrack
+    @next_track += 1
+    t
+  end
+
+  def next_channel
+    c = @next_channel
+    @next_channel += 1
+    c % 16
   end
 
   def strategy
@@ -27,6 +35,14 @@ class Song
 
   def to_bytes
     @file.toBytes
+  end
+
+  def play_drums
+    puts 'play_drums'
+  end
+
+  def play_backing_track
+    puts 'play_backing_track'
   end
 
   def background

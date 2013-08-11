@@ -1,5 +1,6 @@
 class Musician
-  attr_reader :scale, :key, :channel, :octave
+  attr_accessor :track
+  attr_reader :scale, :key, :channel, :octave, :song
 
   Duration = 44
   NoteLength = 0
@@ -12,8 +13,8 @@ class Musician
     @octave = 2
   end
 
-  def play
-    note = determine_note(@scale)
+  def play(commit, scale)
+    note = determine_note(scale)
     track.addNote(@channel, note, duration, note_length)
   end
 

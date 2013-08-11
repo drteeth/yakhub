@@ -1,6 +1,6 @@
 class Section
 
-  attr_accessor :key, :track, :channel, :commits
+  attr_accessor :key, :channel, :commits
 
   ScaleIntervals = {
     major: [0,2,4,5,7,9,11],

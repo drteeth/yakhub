@@ -1,6 +1,8 @@
+require_relative 'musician'
+
 class Lead < Musician
   def instrument
-    Instrument::Lead1
+    Instrument::Lead1Square
   end
 
   def octave
