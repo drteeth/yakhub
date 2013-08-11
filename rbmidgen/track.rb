@@ -6,7 +6,7 @@ class Track
 
   START_BYTES      = [0x4d, 0x54, 0x72, 0x6b]
   END_BYTES        = [0x00, 0xFF, 0x2F, 0x00]
-  DEFAULT_VOLUME   = 90
+  DEFAULT_VOLUME   = 127
 
   def initialize(config={})
     @events = config.fetch(:events, [])
