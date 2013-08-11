@@ -16,9 +16,9 @@ class Backing < Musician
       third = "#{scale.note_by_degree(3)}4"
       fifth = "#{scale.note_by_degree(5)}3"
 
-      track.addNoteOn(@channel, root)
-      track.addNoteOn(@channel, third)
-      track.addNoteOn(@channel, fifth)
+      track.addNoteOn(@channel, root, 0, 50)
+      track.addNoteOn(@channel, third, 0, 50)
+      track.addNoteOn(@channel, fifth, 0, 50)
 
       track.addNoteOff(@channel, root, @duration, note_length)
       track.addNoteOff(@channel, third)
