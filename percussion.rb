@@ -15,7 +15,7 @@ class Percussion
   HighTom2 = 48
   CrashCymbal1 = 49
   HighTom1 = 50
-  RideCymbal1 = 51
+  RideCymbal1 = 'd#2'
   ChineseCymbal = 52
   RideBell = 53
   Tambourine = 54
