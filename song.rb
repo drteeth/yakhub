@@ -14,7 +14,9 @@ class Song
     @next_channel = 0
     @track = @file.addTrack
     @backing = Backing.new('backing', self)
+    @backing.track = @file.addTrack
     @drummer = Drummer.new('drummer', self)
+    @drummer.track = @file.addTrack
   end
 
   def add_section(section)
@@ -28,7 +30,7 @@ class Song
 
   def next_channel
     c = @next_channel
-    available = [0,1,2,3,4,5,6,7,8,9,11,12,13,14]
+    available = [0,1,2,3,4,5,6,7,8,10,11,12,13,14]
     # leave the drum and backing channels open.
     current = available[c % available.count]
     @next_channel += 1

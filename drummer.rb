@@ -1,11 +1,21 @@
 require_relative 'musician'
+require_relative 'percussion'
 
 class Drummer < Musician
 
-  def initialize(*args)
+  Drums = [
+
+  ]
+
+  def initialize(name, song)
     super
-    @channel = 10
     @ticks = 0
+    @octave = 2
+    @pattern = 0
+  end
+
+  def channel
+    9
   end
 
   def instrument
@@ -14,14 +24,31 @@ class Drummer < Musician
   end
 
   def play(commit, scale)
-    # kick on the 1
-    # hh on the 2
-    # snare on the 3
-    # hh on the 4
+    pattern = patterns[@pattern]
+    note = pattern[@ticks % 4]
+    track.addNote(@channel, note, 0, note_length)
     @ticks += 1
-    if @ticks % 1
-      # ...
-    end
+  end
+
+  def patterns
+    @patterns ||= [
+      [
+        Percussion::BassDrum1,
+        Percussion::ClosedHiHat,
+        Percussion::SnareDrum1,
+        Percussion::ClosedHiHat,
+      ],
+      [
+        Percussion::BassDrum1,
+        Percussion::RideCymbal1,
+        Percussion::SnareDrum1,
+        Percussion::RideCymbal1,
+      ],
+    ]
+  end
+
+  def change_section
+    @pattern = (@pattern + 1) % patterns.count
   end
 
 end

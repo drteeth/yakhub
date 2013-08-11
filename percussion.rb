@@ -1,12 +1,12 @@
 class Percussion
   BassDrum2 = 35
-  BassDrum1 = 36
+  BassDrum1 = 'c2'
   SideStickRimshot= 37
-  SnareDrum1 = 38
+  SnareDrum1 = 'd2'
   HandClap = 39
   SnareDrum2 = 40
   LowTom2 = 41
-  ClosedHiHat= 42
+  ClosedHiHat= 'f#2'
   LowTom1 = 43
   PedalHiHat= 44
   MidTom2 = 45
@@ -15,7 +15,7 @@ class Percussion
   HighTom2 = 48
   CrashCymbal1 = 49
   HighTom1 = 50
-  RideCymbal1 = 51
+  RideCymbal1 = 'd#2'
   ChineseCymbal = 52
   RideBell = 53
   Tambourine = 54
