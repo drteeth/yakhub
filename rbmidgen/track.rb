@@ -39,6 +39,7 @@ class Track
   end
 
   def note(channel, pitch, dur, time=0)
+    puts "#{channel}, #{pitch}, #{dur}, #{time}"
     noteOn(channel, pitch, time, DEFAULT_VOLUME)
     noteOff(channel, pitch, dur, DEFAULT_VOLUME) if dur
     self

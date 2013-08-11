@@ -13,14 +13,13 @@ class Author
 
   def play(scale)
     note = determine_note(scale)
-    puts name, note
     track.addNote(channel, note, duration, note_length)
   end
 
   private
 
   def determine_note(scale)
-    "#{strategy.get_note(scale)}2"
+    "#{strategy.get_note(scale)}5"
   end
 
   def duration
