@@ -3,11 +3,7 @@ require_relative 'percussion'
 
 class Drummer < Musician
 
-  Drums = [
-
-  ]
-
-  def initialize(name, song)
+  def initialize(*args)
     super
     @ticks = 0
     @octave = 2

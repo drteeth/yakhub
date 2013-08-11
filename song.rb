@@ -13,10 +13,8 @@ class Song
     background
     @next_channel = 0
     @track = @file.addTrack
-    @backing = Backing.new('backing', self)
-    @backing.track = @file.addTrack
-    @drummer = Drummer.new('drummer', self)
-    @drummer.track = @file.addTrack
+    @backing = Backing.new('backing', self, @file.addTrack)
+    @drummer = Drummer.new('drummer', self, @file.addTrack)
   end
 
   def add_section(section)

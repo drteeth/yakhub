@@ -7,7 +7,7 @@ class Backing < Musician
   end
 
   def instrument
-    Instrument::RockOrgan
+    Instrument::ChoirAahs
   end
 
   def play(commit, scale)

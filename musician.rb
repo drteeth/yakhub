@@ -5,11 +5,11 @@ class Musician
   Duration = 64
   NoteLength = 64
 
-  def initialize(name, song)
+  def initialize(name, song, track=nil)
     @song = song
     @name = name
     @channel = channel
-    @track = song.next_track
+    @track = track || song.next_track
     @track.instrument(@channel, instrument)
     @octave = 2
   end
