@@ -31,19 +31,19 @@ class Percussion
   LowConga = 64
   HighTimbale = 65
   LowTimbale = 66
-  HighAgogô = 67
-  LowAgogô = 68
+  # HighAgogô = 67
+  # LowAgogô = 68
   Cabasa = 69
   Maracas = 70
   ShortWhistle = 71
   LongWhistle = 72
-  ShortGüiro = 73
-  LongGüiro = 74
+  # ShortGüiro = 73
+  # LongGüiro = 74
   Claves = 75
   HighWoodBlock = 76
   LowWoodBlock = 77
-  MuteCuíca = 78
-  OpenCuíca = 79
+  # MuteCuíca = 78
+  # OpenCuíca = 79
   MuteTriangle = 80
   OpenTriangle = 81
 end
