@@ -2,8 +2,8 @@ class Musician
   attr_accessor :track
   attr_reader :key, :channel, :octave, :song
 
-  Duration = 64
-  NoteLength = 64
+  Duration = 32
+  NoteLength = 32
 
   def initialize(name, song, track=nil)
     @song = song
