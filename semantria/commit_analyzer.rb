@@ -5,11 +5,9 @@ $consumer_secret = '85b632d2-c68a-49f3-8b98-1ee8b0a364da'
 
 class SessionCallbackHandler < CallbackHandler
   def onRequest(sender, args)
-    #print "Request: ", args, "\n"
   end
 
   def onResponse(sender, args)
-    #print "Response: ", args, "\n"
   end
 
   def onError(sender, args)
@@ -17,11 +15,9 @@ class SessionCallbackHandler < CallbackHandler
   end
 
   def onDocsAutoResponse(sender, args)
-    #print "DocsAutoResponse: ", args.length, args, "\n"
   end
 
   def onCollsAutoResponse(sender, args)
-    #print "CollsAutoResponse: ", args.length, args, "\n"
   end
 end
 
@@ -111,18 +107,17 @@ class CommitAnalyzer
     end
   end
 
-  def load_scores(file)
+  def load(file)
     @results = JSON.parse(File.read(file))
     self
   end
 
   def scores
-    sc = []
-    results.each do |result|
-      sc << result['sentiment_score']
+    @scores ||= results.map do |result|
+      result['sentiment_score']
     end
-    sc
   end
+
 end
 
 

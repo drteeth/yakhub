@@ -1,9 +1,5 @@
 require 'git'
 
-# Usage:
-#
-# loader = GitLoader.new(path)
-# loader.grouped_commits
 class GitLoader
 
   MAX_COMMITS = 10000
@@ -20,20 +16,11 @@ class GitLoader
   end
 
   def commits
-    repo.log(MAX_COMMITS)
+    @commits ||= parse_commits.map {|c| Commit.new(c.author.name,c.message)}
   end
 
-  def parsed_commits
-    commits.to_a.reverse.take(200).map { |c| Commit.new(c.author.name,c.message) }
-  end
-
-  # returns an array of commits grouped by size
-  def grouped_commits
-    parsed_commits.each_slice(group_size).to_a
-  end
-
-  def group_size
-    [(parsed_commits.count/@sections.to_f).floor,1].max
+  def parse_commits
+    repo.log(MAX_COMMITS).to_a.reverse
   end
 
 end
