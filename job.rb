@@ -66,8 +66,6 @@ class Job
         a = Author.new(commit.name, section.channel, @song.strategy, section.track)
         a.play(section.scale)
       end
-
     end
   end
-
 end
