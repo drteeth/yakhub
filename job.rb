@@ -32,6 +32,7 @@ class Job
   end
 
   def sentitment_file
+    # TODO: create cache dir if it doesn't exist
     @sentitment_file ||= "./cache/#{sanitized_repo}.json"
   end
 
@@ -40,6 +41,7 @@ class Job
   end
 
   def output
+    # TODO: create midifiles dir if it doesn't exist
     @output ||= "./midifiles/#{sanitized_repo}.mid"
   end
 
@@ -73,7 +75,7 @@ class Job
         # make sure they are playing in the correct scale
         @song.play_drums
         @song.play_backing_track
-        musician.play(commit, section.scale)
+        # musician.play(commit, section.scale)
       end
 
       @musicians_roles.values.each do |m|

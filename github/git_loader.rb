@@ -20,7 +20,7 @@ class GitLoader
   end
 
   def parsed_commits
-    commits.to_a.reverse.take(300).map { |c| Commit.new(c.author.name,c.message) }
+    commits.to_a.reverse.take(200).map { |c| Commit.new(c.author.name,c.message) }
   end
 
   # returns an array of commits grouped by size

@@ -46,7 +46,10 @@ class CommitAnalyzer
     # We also will use compression.
     # Initialize session callback handlers
     commits.each do |commit|
+
       message = commit.map(&:message).join
+      # Semantria limits maximum size for text per document to 8192 characters
+      message.slice!(8192, message.length)
       # Creates a sample document which need to be processed on Semantria
       # Unique document ID
       # Source text which need to be processed

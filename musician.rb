@@ -2,12 +2,13 @@ class Musician
   attr_accessor :track
   attr_reader :scale, :key, :channel, :octave, :song
 
-  Duration = 44
-  NoteLength = 0
+  Duration = 64
+  NoteLength = 64
 
   def initialize(name, song)
+    @song = song
     @name = name
-    @channel = song.next_channel
+    @channel = channel
     @track = song.next_track
     @track.instrument(@channel, instrument)
     @octave = 2
@@ -18,6 +19,9 @@ class Musician
     track.addNote(@channel, note, duration, note_length)
   end
 
+  def channel
+    song.next_channel
+  end
   def duration
     Duration
   end
@@ -45,7 +49,7 @@ class Musician
     @strategy ||= PlayRandom.new
   end
 
-   def determine_note(scale)
+  def determine_note(scale)
     "#{strategy.get_note(scale)}#{octave}"
   end
 
