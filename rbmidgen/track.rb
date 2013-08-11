@@ -80,8 +80,6 @@ class Track
     # Makes sure that track length will fill up 4 bytes with 0s in case
     # the length is less than that (the usual case).
     lengthBytes = Util.str2Bytes(trackLength.to_s(16), 4)
-
-    # startBytes.concat(lengthBytes, eventBytes, endBytes)
     startBytes + lengthBytes + eventBytes + endBytes
   end
 

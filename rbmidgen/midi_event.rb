@@ -57,6 +57,6 @@ class MidiEvent
 
     # Some events don't have a second parameter
     byteArray << @param2 if @param2
-    byteArray
+    byteArray.flatten
   end
 end

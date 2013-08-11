@@ -1,0 +1,4 @@
+ruby test.rb
+node test.js
+
+diff node.mid ruby.mid

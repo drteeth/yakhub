@@ -56,6 +56,6 @@ class MetaEvent
       byteArray << @data
     end
 
-    byteArray
+    byteArray.flatten
   end
 end
