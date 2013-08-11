@@ -1,6 +1,6 @@
 class Musician
   attr_accessor :track
-  attr_reader :scale, :key, :channel, :octave, :song
+  attr_reader :key, :channel, :octave, :song
 
   Duration = 64
   NoteLength = 64

@@ -26,7 +26,7 @@ class Drummer < Musician
   def play(commit, scale)
     pattern = patterns[@pattern]
     note = pattern[@ticks % 4]
-    track.addNote(@channel, note, 0, note_length)
+    track.addNote(@channel, note, note_length, note_length)
     @ticks += 1
   end
 
