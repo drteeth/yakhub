@@ -25,6 +25,12 @@ class Song
 
   def next_channel
     c = @next_channel
+
+    # leave the drum and backing channels open.
+    while c != 10 && c != 15
+      c = @next_channel
+    end
+
     @next_channel += 1
     c % 16
   end

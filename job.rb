@@ -68,7 +68,6 @@ class Job
 
       # turn authors into musician
       section.commits.each do |commit|
-        # a = Author.new(commit.name, section.channel, @song.strategy, section.track)
         musician = assign_musician(commit.name, @song)
 
         # make sure they are playing in the correct scale
