@@ -1,11 +1,23 @@
 require_relative 'musician'
+require_relative 'percussion'
 
 class Drummer < Musician
 
-  def initialize(*args)
+  Drums = [
+    Percussion::BassDrum1,
+    Percussion::ClosedHiHat,
+    Percussion::SnareDrum1,
+    Percussion::ClosedHiHat,
+  ]
+
+  def initialize(name, song)
     super
-    @channel = 10
     @ticks = 0
+    @octave = 2
+  end
+
+  def channel
+    9
   end
 
   def instrument
@@ -14,14 +26,9 @@ class Drummer < Musician
   end
 
   def play(commit, scale)
-    # kick on the 1
-    # hh on the 2
-    # snare on the 3
-    # hh on the 4
+    note = Drums[@ticks % 4]
+    track.addNote(@channel, note, 0, note_length)
     @ticks += 1
-    if @ticks % 1
-      # ...
-    end
   end
 
 end

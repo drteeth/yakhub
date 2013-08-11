@@ -17,7 +17,7 @@ class Track
   end
 
   def noteOn(channel, pitch, time=0, velocity=DEFAULT_VOLUME)
-    puts "#{channel}, #{pitch}, #{time}"
+    puts "On : #{channel}, #{pitch}, #{time}"
     events << MidiEvent.new({
       type: MidiEvent::NOTE_ON,
       channel: channel,
@@ -29,6 +29,7 @@ class Track
   end
 
   def noteOff(channel, pitch, time=0, velocity=DEFAULT_VOLUME)
+    puts "Off: #{channel}, #{pitch}, #{time}"
     events << MidiEvent.new({
       type: MidiEvent::NOTE_OFF,
       channel: channel,

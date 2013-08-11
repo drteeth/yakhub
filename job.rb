@@ -75,7 +75,7 @@ class Job
         # make sure they are playing in the correct scale
         @song.play_drums
         @song.play_backing_track
-        # musician.play(commit, section.scale)
+        musician.play(commit, section.scale)
       end
 
       @musicians_roles.values.each do |m|
