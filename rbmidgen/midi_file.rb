@@ -13,7 +13,7 @@ class MidiFile
     @tracks = config.fetch(:tracks,[])
   end
 
-  def addTrack(track)
+  def addTrack(track=nil)
     if track
       tracks << track
       self

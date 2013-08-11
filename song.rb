@@ -1,15 +1,17 @@
 class Song
 
+  attr_accessor :key
+
   def initialize(key, file=MidiFile.new)
     @key = key
     @file = file
+    @sections = []
   end
 
-  def add_section(sentiment)
-    Section.new(sentiment).tap do |s|
-      s.track = create_track
-      @sections << s
-    end
+  def add_section(section)
+    @sections << section
+    section.key = key
+    section.track = create_track
   end
 
   def create_track
@@ -19,5 +21,9 @@ class Song
 
   def strategy
     @strategy ||= PlayRandom.new
+  end
+
+  def to_bytes
+    @file.toBytes
   end
 end

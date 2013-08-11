@@ -4,6 +4,7 @@ require_relative 'semantria/commit_analyzer'
 require_relative 'github/git_loader'
 require_relative 'rbmidgen/rbmidgen'
 
+require_relative 'job'
 require_relative 'scale'
 require_relative 'play_degree'
 require_relative 'play_random'

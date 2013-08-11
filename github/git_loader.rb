@@ -16,11 +16,20 @@ class GitLoader
   end
 
   def commits
-    @commits ||= parse_commits.map {|c| Commit.new(c.author.name,c.message)}
+    repo.log(MAX_COMMITS)
   end
 
-  def parse_commits
-    repo.log(MAX_COMMITS).to_a.reverse
+  def parsed_commits
+    commits.to_a.reverse.take(300).map { |c| Commit.new(c.author.name,c.message) }
+  end
+
+  # returns an array of commits grouped by size
+  def grouped_commits
+    parsed_commits.each_slice(group_size).to_a
+  end
+
+  def group_size
+    [(parsed_commits.count/@sections.to_f).floor,1].max
   end
 
 end

@@ -1,3 +1,6 @@
+require_relative 'song'
+require_relative 'section'
+
 class Job
   attr_accessor :repo
 
@@ -6,12 +9,17 @@ class Job
   end
 
   def load_commits
-    @commits = GitLoader.new(job.repo).commits
+    loader = GitLoader.new(repo)
+    @commit_groups = loader.grouped_commits
   end
 
   def analyze_sentiments
-    analyzer = CommitAnalyzer.new(@commits, sentitment_file)
-    analyzer.run unless has_sentiments?
+    analyzer = CommitAnalyzer.new(@commit_groups, sentitment_file)
+    if has_sentiments?
+      analyzer.load_from_cache
+    else
+      analyzer.run
+    end
     @sentiments = analyzer.scores
   end
 
@@ -35,8 +43,8 @@ class Job
   def sections
     unless @groups
       @groups = []
-      parsed_commits.each_slice(group_size).to_a.each_with_index do |commits,i|
-        Section.new(sentitment: @scores[i], commits:commits)
+      @commit_groups.each_with_index do |commits,i|
+        @groups << Section.new(@sentiments[i], commits)
       end
     end
     @groups
@@ -44,30 +52,22 @@ class Job
 
   def write_output(path=output)
     File.open(path, 'wb') do |f|
-      f.write(file.toBytes)
+      f.write(@song.to_bytes)
     end
   end
 
   def create_song(key='c')
-    song = Song.new(key)
-    sections do |section|
-      section.track = song.create_track
+    @song = Song.new(key)
+    sections.each do |section|
       section.channel = 0
-      song.add_section(section)
+      @song.add_section(section)
 
-      authors = group.authors.map do |name|
-        Author.new(name, section.channel, song.strategy, section.track)
+      authors = section.commits.map do |commit|
+        a = Author.new(commit.name, section.channel, @song.strategy, section.track)
+        a.play(section.scale)
       end
 
-      section.commits.each do |commit|
-        a.play(scale)
-      end
     end
   end
 
-  private
-
-  def group_size
-    [(parsed_commits.count/@sections.to_f).floor,1].max
-  end
 end

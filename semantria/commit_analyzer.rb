@@ -107,9 +107,8 @@ class CommitAnalyzer
     end
   end
 
-  def load(file)
-    @results = JSON.parse(File.read(file))
-    self
+  def load_from_cache
+    @results = JSON.parse(File.read(filename))
   end
 
   def scores

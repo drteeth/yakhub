@@ -1,21 +1,27 @@
 class Section
 
+  attr_accessor :key, :track, :channel, :commits
+
   ScaleIntervals = {
     major: [0,2,4,5,7,9,11],
     minor: [0,2,3,5,7,9,11],
   }
 
-  def initialize(sentiment, track, commits)
-    @scale = create_scale(sentiment)
+  def initialize(sentiment, commits)
+    @sentiment = sentiment
+    @commits = commits
   end
 
-  def create_scale(sentiment)
-    intervals = if sentiment > 0
-      ScaleIntervals.first
-    else
-      ScaleIntervals.last
+  def scale
+    unless @scale
+      intervals = if @sentiment > 0
+        ScaleIntervals.values.first
+      else
+        ScaleIntervals.values.last
+      end
+      @scale = Scale.new(@key, intervals)
     end
-    Scale.new(@key, intervals)
+    @scale
   end
 
 end
