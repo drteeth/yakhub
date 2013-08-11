@@ -15,8 +15,10 @@ class Section
   def scale
     unless @scale
       intervals = if @sentiment > 0
+        @key = 'c'
         ScaleIntervals.values.first
       else
+        @key = 'a'
         ScaleIntervals.values.last
       end
       @scale = Scale.new(@key, intervals)
