@@ -4,7 +4,7 @@ require_relative 'drummer'
 class Song
 
   attr_accessor :key
-  attr_reader :background
+  attr_reader :background, :backing, :drummer
 
   def initialize(key, file=MidiFile.new)
     @key = key

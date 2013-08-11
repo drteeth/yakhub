@@ -12,19 +12,17 @@ class Backing < Musician
 
   def play(commit, scale)
     unless @playing
-      puts @duration
-      root = "#{scale.note_by_degree(1)}2"
-      third = "#{scale.note_by_degree(3)}3"
-      fifth = "#{scale.note_by_degree(5)}2"
+      root = "#{scale.note_by_degree(1)}3"
+      third = "#{scale.note_by_degree(3)}4"
+      fifth = "#{scale.note_by_degree(5)}3"
 
-      # binding.pry
-      track.addNoteOn(@channel, root, @duration, note_length)
-      track.addNoteOn(@channel, third, @duration, note_length)
-      track.addNoteOn(@channel, fifth, @duration, note_length)
+      track.addNoteOn(@channel, root)
+      track.addNoteOn(@channel, third)
+      track.addNoteOn(@channel, fifth)
 
       track.addNoteOff(@channel, root, @duration, note_length)
-      track.addNoteOff(@channel, third, @duration, note_length)
-      track.addNoteOff(@channel, fifth, @duration, note_length)
+      track.addNoteOff(@channel, third)
+      track.addNoteOff(@channel, fifth)
       @playing = true
     end
   end

@@ -81,6 +81,8 @@ class Job
       @musicians_roles.values.each do |m|
         m.change_section
       end
+      @song.backing.change_section
+      @song.drummer.change_section
     end
   end
 
