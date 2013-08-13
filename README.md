@@ -8,6 +8,7 @@
 Turn any local github repo into a midi song. Uses Semantria(https://semantria.com/) for Sentiment Analysis.
 
 Usage:
+
     # analyze the repo for sentiments, and generate the midi file
     ./yakhub <local_git_repo>
 
