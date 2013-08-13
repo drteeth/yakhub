@@ -20,7 +20,7 @@ class Backing < Musician
       track.addNoteOn(@channel, third, 0, 50)
       track.addNoteOn(@channel, fifth, 0, 50)
 
-      track.addNoteOff(@channel, root, @duration, note_length)
+      track.addNoteOff(@channel, root, @duration)
       track.addNoteOff(@channel, third)
       track.addNoteOff(@channel, fifth)
       @playing = true

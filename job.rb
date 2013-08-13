@@ -84,6 +84,7 @@ class Job
       @song.backing.change_section
       @song.drummer.change_section
     end
+    puts @musicians_roles.keys.uniq
   end
 
   # assign an author a musician's role.

@@ -2,10 +2,11 @@ require_relative 'musician'
 
 class Lead < Musician
   def instrument
-    Instrument::Lead1Square
+    puts "creating instrument for lead."
+    rand(128)#Instrument::Lead1Square
   end
 
   def octave
-    3
+    rand(2)+2
   end
 end

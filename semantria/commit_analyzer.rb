@@ -121,6 +121,3 @@ class CommitAnalyzer
   end
 
 end
-
-
-
